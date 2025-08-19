@@ -1,0 +1,293 @@
+import React, { useState } from 'react';
+import toast from 'react-hot-toast';
+import {
+  HiLocationMarker,
+  HiPhone,
+  HiMail,
+} from 'react-icons/hi';
+import {
+  FaTwitter,
+  FaLinkedinIn,
+  FaInstagram,
+  FaYoutube,
+} from 'react-icons/fa';
+
+const Contact = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    customSubject: '',
+    message: '',
+  });
+
+  const predefinedSubjects = [
+    'Support',
+    'Feedback',
+    'Partnership',
+    'General Inquiry',
+    'Other',
+  ];
+
+  const validateEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const subjectToSend = formData.subject === 'Other' ? formData.customSubject : formData.subject;
+
+    if (!validateEmail(formData.email)) {
+      toast.error('Please enter a valid email address');
+      return;
+    }
+
+    if (formData.subject === 'Other' && !formData.customSubject.trim()) {
+      toast.error('Please specify the subject');
+      return;
+    }
+
+    try {
+      const res = await fetch('http://localhost:5000/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          subject: subjectToSend,
+          message: formData.message,
+        }),
+      });
+
+      const data = await res.json();
+      if (res.ok) {
+        toast.success(data.message || 'Message sent successfully!');
+        setFormData({
+          name: '',
+          email: '',
+          subject: '',
+          customSubject: '',
+          message: '',
+        });
+      } else {
+        toast.error(data.error || 'Submission failed');
+      }
+    } catch {
+      toast.error('Network error, please try again later.');
+    }
+  };
+
+  return (
+    <div className="min-h-screen py-16 px-4 sm:px-6 lg:px-8 text-white transition-colors duration-300">
+      {/* Header */}
+      <div className="max-w-4xl mx-auto text-center mb-12">
+        <h1 className="text-4xl font-bold mb-4">Contact Us</h1>
+        <p className="text-lg text-white/80">
+          We’d love to hear from you. Fill out the form below and we’ll get back to you soon.
+        </p>
+      </div>
+
+      {/* Main grid */}
+      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12">
+        {/* Form */}
+        <div className="rounded-xl p-8 text-white border border-white/20">
+          <h2 className="text-2xl font-semibold mb-6">Send us a message</h2>
+          <form onSubmit={handleSubmit} className="space-y-5">
+            <div>
+              <label htmlFor="name" className="block text-sm font-medium text-white/90">
+                Full Name
+              </label>
+              <input
+                type="text"
+                name="name"
+                id="name"
+                value={formData.name}
+                onChange={handleChange}
+                required
+                className="mt-1 block w-full px-4 py-2 rounded-md border border-white/30 bg-transparent text-white placeholder-white/50 focus:ring-blue-400 focus:border-blue-400"
+                placeholder="Your full name"
+              />
+            </div>
+
+            <div>
+              <label htmlFor="email" className="block text-sm font-medium text-white/90">
+                Email Address
+              </label>
+              <input
+                type="email"
+                name="email"
+                id="email"
+                value={formData.email}
+                onChange={handleChange}
+                required
+                className="mt-1 block w-full px-4 py-2 rounded-md border border-white/30 bg-transparent text-white placeholder-white/50 focus:ring-blue-400 focus:border-blue-400"
+                placeholder="you@example.com"
+              />
+            </div>
+
+            <div>
+              <label htmlFor="subject" className="block text-sm font-medium text-white/90">
+                Subject
+              </label>
+              <select
+                name="subject"
+                id="subject"
+                value={formData.subject}
+                onChange={handleChange}
+                required
+                className="mt-1 block w-full px-4 py-2 rounded-md border border-white/30 bg-transparent text-white focus:ring-blue-400 focus:border-blue-400"
+              >
+                <option value="" disabled>
+                  Select a subject
+                </option>
+                {predefinedSubjects.map((option) => (
+                  <option key={option} value={option} className="bg-gray-900 text-white">
+                    {option}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            {formData.subject === 'Other' && (
+              <div>
+                <label htmlFor="customSubject" className="block text-sm font-medium text-white/90">
+                  Please specify
+                </label>
+                <input
+                  type="text"
+                  name="customSubject"
+                  id="customSubject"
+                  value={formData.customSubject}
+                  onChange={handleChange}
+                  required
+                  className="mt-1 block w-full px-4 py-2 rounded-md border border-white/30 bg-transparent text-white placeholder-white/50 focus:ring-blue-400 focus:border-blue-400"
+                  placeholder="Custom subject"
+                />
+              </div>
+            )}
+
+            <div>
+              <label htmlFor="message" className="block text-sm font-medium text-white/90">
+                Your Message
+              </label>
+              <textarea
+                name="message"
+                id="message"
+                rows="5"
+                value={formData.message}
+                onChange={handleChange}
+                required
+                className="mt-1 block w-full px-4 py-2 rounded-md border border-white/30 bg-transparent text-white placeholder-white/50 focus:ring-blue-400 focus:border-blue-400"
+                placeholder="Write your message here..."
+              />
+            </div>
+
+            <div>
+              <button
+                type="submit"
+                className="w-full bg-blue-700 hover:bg-blue-800 text-white font-semibold py-2 rounded-md transition-colors duration-300"
+              >
+                Send Message
+              </button>
+            </div>
+          </form>
+        </div>
+
+        {/* Contact Info */}
+        <div className="space-y-6 text-white/90">
+          <div className="flex items-start space-x-3">
+            <HiLocationMarker size={28} className="mt-1 text-blue-400" />
+            <div>
+              <p className="font-semibold text-white">Our Address</p>
+              <p className="text-white/70">
+                Ben Kiwanuka street
+                <br />
+                Kampala, Uganda
+              </p>
+            </div>
+          </div>
+
+          <div className="flex items-start space-x-3">
+            <HiPhone size={26} className="mt-1 text-blue-400" />
+            <div>
+              <p className="font-semibold text-white">Call Us</p>
+              <p className="text-white/70">+256 707838631</p>
+            </div>
+          </div>
+
+          <div className="flex items-start space-x-3">
+            <HiMail size={26} className="mt-1 text-blue-400" />
+            <div>
+              <p className="font-semibold text-white">Email</p>
+              <p className="text-white/70">info@kerliix.com</p>
+              <p className="text-white/70">support@kerliix.com</p>
+            </div>
+          </div>
+
+          <div className="pt-4">
+            <p className="font-semibold text-white mb-2">Follow us</p>
+            <div className="flex flex-wrap gap-4 text-xl">
+              <a
+                href="#"
+                aria-label="Twitter"
+                className="flex items-center gap-1 text-blue-400 hover:text-blue-600 transition"
+              >
+                <FaTwitter />
+                @kerliix
+              </a>
+              <a
+                href="#"
+                aria-label="Instagram"
+                className="flex items-center gap-1 text-blue-400 hover:text-blue-600 transition"
+              >
+                <FaInstagram />
+                kerliix
+              </a>
+              <a
+                href="#"
+                aria-label="LinkedIn"
+                className="flex items-center gap-1 text-blue-400 hover:text-blue-600 transition"
+              >
+                <FaLinkedinIn />
+                Kerliix
+              </a>
+              <a
+                href="#"
+                aria-label="YouTube"
+                className="flex items-center gap-1 text-blue-400 hover:text-blue-600 transition"
+              >
+                <FaYoutube />
+                Kerliix
+              </a>
+            </div>
+          </div>
+
+          <div className="pt-6 space-y-2">
+            <p className="font-semibold text-white">Response Time</p>
+            <p className="text-white/80">We typically respond within 24 to 28 hours.</p>
+
+            <p className="font-semibold text-white">Important Notice</p>
+            <p className="text-white/80">Official responses will come from:</p>
+              <ul className="list-disc list-inside text-white/70 mt-1">
+                <li>noreply@kerliix.com</li>
+                <li>support@kerliix.com</li>
+                <li>info@kerliix.com</li>
+              </ul>
+            <p>
+              Please be{' '}
+              <span className="font-semibold text-red-500">cautious</span> of any other email addresses claiming to represent Kerliix.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Contact;
