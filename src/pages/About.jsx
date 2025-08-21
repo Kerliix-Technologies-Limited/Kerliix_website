@@ -41,6 +41,46 @@ const About = () => {
           </div>
 
           <p>
+            At Kerliix, we envision a future where every interaction with technology feels natural, helpful, and human-centric. Whether it's your smart fridge talking to your fitness app, or your car syncing with your calendar, we're making those invisible connections possible.
+          </p>
+
+          <p>
+            For developers, Kerliix offers clean, well-documented APIs, SDKs, and tools that unlock powerful cross-platform capabilities. Our sandbox environment allows rapid prototyping and integration testing, all with zero friction.
+          </p>
+
+          <p>
+            We also recognize the role of organizations and enterprises. While our core focus is individuals and developers, we’re building scalable solutions that help organizations personalize customer experiences, streamline infrastructure, and unlock new value from user data—securely and ethically.
+          </p>
+
+          {/* Image 3 */}
+          <div className="rounded overflow-hidden shadow-lg border border-blue-700">
+            <img
+              src="/assets/about-team.jpg"
+              alt="Kerliix Team Collaboration"
+              className="w-full h-64 object-cover"
+            />
+          </div>
+
+          <p>
+            Kerliix is still young—but we’re bold, agile, and focused on solving a problem that affects billions. Our team is made up of engineers, designers, and thinkers driven by curiosity, empathy, and a mission to simplify technology without compromising power.
+          </p>
+
+          <p>
+            Join us in reimagining how people interact with the digital world. With Kerliix, the future is connected—intelligently, securely, and beautifully.
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default About;              src="/assets/about-devices.jpg"
+              alt="Interconnected Devices"
+              className="w-full h-64 object-cover"
+            />
+          </div>
+
+          <p>
             At Kerliix, we envision a future where every interaction with technology feels fluid, intuitive, and human-centric. Whether it’s your smart home syncing with your lifestyle apps or your work tools connecting effortlessly, Kerliix ensures everything works together as one unified ecosystem.
           </p>
 
