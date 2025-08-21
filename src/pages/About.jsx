@@ -8,7 +8,7 @@ const About = () => {
         <div className="text-center">
           <h1 className="text-4xl font-bold mb-4">About Kerliix Technologies</h1>
           <p className="text-gray-400 text-lg">
-            Connecting people and technology through intelligence and simplicity.
+            Connecting people with the technologies they use through intelligence, simplicity, and unity.
           </p>
         </div>
 
@@ -24,17 +24,57 @@ const About = () => {
         {/* Paragraphs */}
         <div className="space-y-6 text-gray-300 text-lg">
           <p>
-            Kerliix Technologies was born from a single belief: that the relationship between people and their technology should be seamless, intelligent, and empowering. In a world overwhelmed by disconnected devices, apps, and platforms, Kerliix steps in as the unifying bridge.
+            Kerliix Technologies was born from a single belief: that people and technology should work together seamlessly. In a world filled with disconnected devices, apps, and platforms, Kerliix acts as the unifying bridge, making connections effortless and meaningful.
           </p>
 
           <p>
-            Our flagship innovations—<strong>Digital Me</strong> and the <strong>Universal API (UAPI)</strong>—were designed to harmonize your digital life. With Digital Me, you get a personalized virtual you that understands your preferences, routines, and digital environment.
+            Our mission is simple: unify the digital experiences of individuals and organizations while empowering them to interact naturally with technology. From personal devices to enterprise systems, Kerliix enables everything to communicate, collaborate, and enhance human experience.
+          </p>
+
+          {/* Image 2 */}
+          <div className="rounded overflow-hidden shadow-lg border border-blue-700">
+            <img
+              src="/assets/about-devices.jpg"
+              alt="Interconnected Devices"
+              className="w-full h-64 object-cover"
+            />
+          </div>
+
+          <p>
+            At Kerliix, we envision a future where every interaction with technology feels fluid, intuitive, and human-centric. Whether it’s your smart home syncing with your lifestyle apps or your work tools connecting effortlessly, Kerliix ensures everything works together as one unified ecosystem.
           </p>
 
           <p>
-            The UAPI acts as the central nervous system, enabling devices, applications, and platforms to talk to each other effortlessly. No more silos. Just harmony.
+            For developers, we provide well-documented APIs, SDKs, and tools that unlock cross-platform capabilities. Our environment enables rapid prototyping and integration testing, allowing innovation without friction.
           </p>
 
+          <p>
+            Organizations also benefit: Kerliix helps streamline infrastructure, unify digital touchpoints, and provide secure, personalized experiences for users—all while maintaining simplicity and transparency.
+          </p>
+
+          {/* Image 3 */}
+          <div className="rounded overflow-hidden shadow-lg border border-blue-700">
+            <img
+              src="/assets/about-team.jpg"
+              alt="Kerliix Team Collaboration"
+              className="w-full h-64 object-cover"
+            />
+          </div>
+
+          <p>
+            Kerliix is bold, agile, and committed to solving the universal challenge of disconnected technology. Our team of engineers, designers, and thinkers work with curiosity, empathy, and a mission to unify technology without sacrificing power.
+          </p>
+
+          <p>
+            Join us in creating a future where people and technology coexist harmoniously. With Kerliix, the digital world is unified, connected, and empowering.
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default About;
           {/* Image 2 */}
           <div className="rounded overflow-hidden shadow-lg border border-blue-700">
             <img
