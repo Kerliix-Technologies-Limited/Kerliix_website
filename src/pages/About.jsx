@@ -74,6 +74,22 @@ const About = () => {
   );
 };
 
+export default About;            />
+          </div>
+
+          <p>
+            Kerliix is still young—but we’re bold, agile, and focused on solving a problem that affects billions. Our team is made up of engineers, designers, and thinkers driven by curiosity, empathy, and a mission to simplify technology without compromising power.
+          </p>
+
+          <p>
+            Join us in reimagining how people interact with the digital world. With Kerliix, the future is connected—intelligently, securely, and beautifully.
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+};
+
 export default About;              src="/assets/about-devices.jpg"
               alt="Interconnected Devices"
               className="w-full h-64 object-cover"
