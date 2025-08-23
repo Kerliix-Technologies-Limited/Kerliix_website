@@ -1,8 +1,56 @@
 import React from "react";
+import { Helmet } from "react-helmet-async";
 
 const About = () => {
   return (
     <section className="text-white py-16 px-6">
+      <Helmet>
+        <title>About Kerliix Technologies | Connecting People & Technology</title>
+        <meta
+          name="description"
+          content="Learn about Kerliix Technologies, our mission to unify digital experiences, and how we connect people with technology seamlessly. Discover our vision, team, and developer tools."
+        />
+        <meta
+          name="keywords"
+          content="Kerliix, technology, digital experiences, developer tools, connected devices, APIs, SDKs, tech innovation"
+        />
+        <meta name="author" content="Kerliix Technologies" />
+        {/* Open Graph / Social Sharing */}
+        <meta property="og:title" content="About Kerliix Technologies" />
+        <meta
+          property="og:description"
+          content="Connecting people with technology seamlessly. Explore our vision, team, and developer tools."
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="/assets/about-vision.jpg" />
+        <meta property="og:url" content="https://www.kerliix.com/about" />
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="About Kerliix Technologies" />
+        <meta
+          name="twitter:description"
+          content="Connecting people with technology seamlessly. Explore our vision, team, and developer tools."
+        />
+        <meta name="twitter:image" content="/assets/about-vision.jpg" />
+
+        {/* JSON-LD Structured Data */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "Kerliix Technologies",
+            "url": "https://www.kerliix.com",
+            "logo": "https://www.kerliix.com/assets/logo.png",
+            "sameAs": [
+              "https://twitter.com/kerliix",
+              "https://www.linkedin.com/company/kerliix",
+              "https://www.facebook.com/kerliix"
+            ],
+            "description": "Kerliix Technologies connects people with technology seamlessly. We provide APIs, SDKs, and solutions to unify digital experiences for individuals and organizations."
+          })}
+        </script>
+      </Helmet>
+
       <div className="max-w-5xl mx-auto space-y-10">
         {/* Header */}
         <div className="text-center">
