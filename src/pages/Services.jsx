@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import {
   FaCloud,
   FaCogs,
@@ -15,7 +16,7 @@ export default function Services() {
     {
       title: 'Device & App Integration',
       description:
-        'Connect all your devices and applications in a single, unified ecosystem for seamless workflows.',
+        'Connect all your devices and applications in a single, unified ecosystem for seamless workflows and efficiency.',
       icon: <FaLink className="text-blue-400" />,
     },
     {
@@ -64,6 +65,60 @@ export default function Services() {
 
   return (
     <div className="min-h-screen text-white px-6 py-16">
+      <Helmet>
+        <title>Services | Kerliix Technologies</title>
+        <meta
+          name="description"
+          content="Explore Kerliix Technologies' services, including device integration, automation, cloud solutions, AI recommendations, IT consulting, and custom software to empower businesses."
+        />
+        <meta
+          name="keywords"
+          content="Kerliix, services, IT consulting, cloud solutions, automation, device integration, AI, security, software solutions, collaboration"
+        />
+        <meta name="author" content="Kerliix Technologies" />
+
+        {/* Open Graph / Social Sharing */}
+        <meta property="og:title" content="Services | Kerliix Technologies" />
+        <meta
+          property="og:description"
+          content="Discover Kerliix Technologies' innovative services to connect, empower, and unify businesses with technology."
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://raw.githubusercontent.com/kerliix/.github/main/company/logo.png" />
+        <meta property="og:url" content="https://www.kerliix.com/services" />
+
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Services | Kerliix Technologies" />
+        <meta
+          name="twitter:description"
+          content="Discover Kerliix Technologies' innovative services to connect, empower, and unify businesses with technology."
+        />
+        <meta
+          name="twitter:image"
+          content="https://raw.githubusercontent.com/kerliix/.github/main/company/logo.png"
+        />
+
+        {/* JSON-LD Structured Data */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "name": "Services",
+            "url": "https://www.kerliix.com/services",
+            "description": "Explore Kerliix Technologies' services, including device integration, automation, cloud solutions, AI recommendations, IT consulting, and custom software solutions.",
+            "publisher": {
+              "@type": "Organization",
+              "name": "Kerliix Technologies",
+              "logo": {
+                "@type": "ImageObject",
+                "url": "https://raw.githubusercontent.com/kerliix/.github/main/company/logo.png"
+              }
+            }
+          })}
+        </script>
+      </Helmet>
+
       <div className="max-w-6xl mx-auto">
         <h1 className="text-4xl font-bold text-blue-400 mb-4">Our Services</h1>
         <p className="text-white/80 mb-12 max-w-2xl">
@@ -87,4 +142,4 @@ export default function Services() {
       </div>
     </div>
   );
-}
+        }
