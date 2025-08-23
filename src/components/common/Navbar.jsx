@@ -1,14 +1,21 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FiMenu, FiX } from 'react-icons/fi';
+import { useAuth } from '../../context/AuthContext.jsx';
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { user } = useAuth();
 
-  const user = {
-    username: 'kerliix_user',
-    email: 'user@kerliix.com',
-    avatarUrl: 'https://i.pravatar.cc/150?img=32',
+  // Generate initials fallback, e.g. "JD" for John Doe
+  const getInitials = (user) => {
+    if (!user) return 'X';
+    const first = user.firstName || '';
+    const last = user.lastName || '';
+    if (!first && !last && user.username) {
+      return user.username.slice(0, 2).toUpperCase();
+    }
+    return (first[0] + (last[0] || '')).toUpperCase();
   };
 
   return (
@@ -40,18 +47,22 @@ export default function Navbar() {
 
         {/* Right: Profile + Mobile Menu Icon */}
         <div className="flex items-center gap-4">
-          {/* Profile Image */}
+          {/* Profile */}
           <a
             href="https://accounts.kerliix.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="sm:block"
+            className="sm:block h-10 w-10 rounded-full border-2 border-white/30 hover:border-white flex items-center justify-center font-medium text-white bg-gray-700 overflow-hidden"
           >
-            <img
-              src={user.avatarUrl}
-              alt="Profile"
-              className="h-10 w-10 rounded-full border-2 border-white/30 hover:border-white transition"
-            />
+            {user?.avatarUrl ? (
+              <img
+                src={user.avatarUrl}
+                alt="Profile"
+                className="h-10 w-10 rounded-full object-cover"
+              />
+            ) : (
+              <span>{getInitials(user)}</span>
+            )}
           </a>
 
           {/* Mobile Menu Button */}
@@ -68,29 +79,17 @@ export default function Navbar() {
       {/* Mobile Menu Panel */}
       {isMenuOpen && (
         <div className="md:hidden mt-2 bg-gradient-to-br from-blue-900 to-gray-900 border-t border-white/20 px-4 py-3 space-y-3 text-sm font-medium">
-          <Link
-            to="/about"
-            onClick={() => setIsMenuOpen(false)}
-            className="block hover:text-blue-400 transition"
-          >
+          <Link to="/about" onClick={() => setIsMenuOpen(false)} className="block hover:text-blue-400 transition">
             About
           </Link>
-          <Link
-            to="/services"
-            onClick={() => setIsMenuOpen(false)}
-            className="block hover:text-blue-400 transition"
-          >
+          <Link to="/services" onClick={() => setIsMenuOpen(false)} className="block hover:text-blue-400 transition">
             Services
           </Link>
-          <Link
-            to="/contact"
-            onClick={() => setIsMenuOpen(false)}
-            className="block hover:text-blue-400 transition"
-          >
+          <Link to="/contact" onClick={() => setIsMenuOpen(false)} className="block hover:text-blue-400 transition">
             Contact
           </Link>
         </div>
       )}
     </nav>
   );
-}
+        }
