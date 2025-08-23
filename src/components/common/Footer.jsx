@@ -18,8 +18,8 @@ export default function Footer() {
         <div>
           <h3 className="text-xl font-semibold mb-2">Kerliix</h3>
           <p className="text-sm text-white/80 leading-relaxed mb-4">
-            Empowering connections through intuitive design and cutting-edge technology.
-            Let's build the future together.
+            Kerliix Technologies. Unifying people and the technologies they use into a seamless digital ecosystem.<br />
+            Be part of the unified and connected ecosystem with Kerliix.
           </p>
 
           {/* Social Icons */}
@@ -174,7 +174,7 @@ export default function Footer() {
 
       {/* Tagline */}
       <div className="max-w-7xl mx-auto mt-6 text-center text-blue-400 uppercase tracking-wider font-semibold">
-        Connect. Understand. Unify.
+        Unified. Connected. Together.
       </div>
     </footer>
   );
