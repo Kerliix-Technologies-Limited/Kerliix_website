@@ -85,6 +85,61 @@ const Contact = () => {
 
   return (
     <div className="min-h-screen py-16 px-4 sm:px-6 lg:px-8 text-white transition-colors duration-300">
+
+      <Helmet>
+  <title>Contact Kerliix Technologies | Get in Touch</title>
+  <meta
+    name="description"
+    content="Reach out to Kerliix Technologies for support, inquiries, partnerships, or feedback. Our team is here to assist you quickly and securely."
+  />
+  <meta
+    name="keywords"
+    content="Kerliix, contact, support, inquiry, partnership, feedback, email, phone"
+  />
+  <meta name="author" content="Kerliix Technologies" />
+
+  {/* Open Graph / Social Sharing */}
+  <meta property="og:title" content="Contact Kerliix Technologies" />
+  <meta
+    property="og:description"
+    content="Reach out to Kerliix Technologies for support, inquiries, partnerships, or feedback. Our team is here to assist you quickly and securely."
+  />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://raw.githubusercontent.com/kerliix/.github/main/company/logo.png" />
+  <meta property="og:url" content="https://www.kerliix.com/contact" />
+
+  {/* Twitter Card */}
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Contact Kerliix Technologies" />
+  <meta
+    name="twitter:description"
+    content="Reach out to Kerliix Technologies for support, inquiries, partnerships, or feedback. Our team is here to assist you quickly and securely."
+  />
+  <meta
+    name="twitter:image"
+    content="https://raw.githubusercontent.com/kerliix/.github/main/company/logo.png"
+  />
+
+  {/* JSON-LD Structured Data */}
+  <script type="application/ld+json">
+    {JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "ContactPage",
+      "name": "Kerliix Contact Page",
+      "url": "https://www.kerliix.com/contact",
+      "description": "Contact Kerliix Technologies for support, inquiries, partnerships, or feedback. We provide quick and secure assistance.",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Kerliix Technologies",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://raw.githubusercontent.com/kerliix/.github/main/company/logo.png"
+        }
+      }
+    })}
+  </script>
+</Helmet>
+      
       {/* Header */}
       <div className="max-w-4xl mx-auto text-center mb-12">
         <h1 className="text-4xl font-bold mb-4">Contact Us</h1>
