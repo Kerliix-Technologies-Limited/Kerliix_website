@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import toast from 'react-hot-toast';
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 import {
   HiLocationMarker,
   HiPhone,
