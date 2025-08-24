@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import toast from 'react-hot-toast';
+import { Helmet } from 'react-helmet';
 import {
   HiLocationMarker,
   HiPhone,
@@ -11,6 +12,7 @@ import {
   FaInstagram,
   FaYoutube,
 } from 'react-icons/fa';
+import API from '../api';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -41,7 +43,10 @@ const Contact = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const subjectToSend = formData.subject === 'Other' ? formData.customSubject : formData.subject;
+    const subjectToSend =
+      formData.subject === 'Other'
+        ? formData.customSubject
+        : formData.subject;
 
     if (!validateEmail(formData.email)) {
       toast.error('Please enter a valid email address');
@@ -54,92 +59,83 @@ const Contact = () => {
     }
 
     try {
-      const res = await fetch('http://localhost:5000/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          subject: subjectToSend,
-          message: formData.message,
-        }),
+      const { data } = await API.post('/contact', {
+        name: formData.name,
+        email: formData.email,
+        subject: subjectToSend,
+        message: formData.message,
       });
 
-      const data = await res.json();
-      if (res.ok) {
-        toast.success(data.message || 'Message sent successfully!');
-        setFormData({
-          name: '',
-          email: '',
-          subject: '',
-          customSubject: '',
-          message: '',
-        });
+      toast.success(data.message || 'Message sent successfully!');
+      setFormData({
+        name: '',
+        email: '',
+        subject: '',
+        customSubject: '',
+        message: '',
+      });
+    } catch (err) {
+      if (err.response?.data?.error) {
+        toast.error(err.response.data.error);
       } else {
-        toast.error(data.error || 'Submission failed');
+        toast.error('Network error, please try again later.');
       }
-    } catch {
-      toast.error('Network error, please try again later.');
     }
   };
 
   return (
     <div className="min-h-screen py-16 px-4 sm:px-6 lg:px-8 text-white transition-colors duration-300">
-
       <Helmet>
-  <title>Contact Kerliix Technologies | Get in Touch</title>
-  <meta
-    name="description"
-    content="Reach out to Kerliix Technologies for support, inquiries, partnerships, or feedback. Our team is here to assist you quickly and securely."
-  />
-  <meta
-    name="keywords"
-    content="Kerliix, contact, support, inquiry, partnership, feedback, email, phone"
-  />
-  <meta name="author" content="Kerliix Technologies" />
+        <title>Contact Kerliix Technologies | Get in Touch</title>
+        <meta
+          name="description"
+          content="Reach out to Kerliix Technologies for support, inquiries, partnerships, or feedback. Our team is here to assist you quickly and securely."
+        />
+        <meta
+          name="keywords"
+          content="Kerliix, contact, support, inquiry, partnership, feedback, email, phone"
+        />
+        <meta name="author" content="Kerliix Technologies" />
+        <meta property="og:title" content="Contact Kerliix Technologies" />
+        <meta
+          property="og:description"
+          content="Reach out to Kerliix Technologies for support, inquiries, partnerships, or feedback. Our team is here to assist you quickly and securely."
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://raw.githubusercontent.com/kerliix/.github/main/company/logo.png" />
+        <meta property="og:url" content="https://www.kerliix.com/contact" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Contact Kerliix Technologies" />
+        <meta
+          name="twitter:description"
+          content="Reach out to Kerliix Technologies for support, inquiries, partnerships, or feedback. Our team is here to assist you quickly and securely."
+        />
+        <meta
+          name="twitter:image"
+          content="https://raw.githubusercontent.com/kerliix/.github/main/company/logo.png"
+        />
 
-  {/* Open Graph / Social Sharing */}
-  <meta property="og:title" content="Contact Kerliix Technologies" />
-  <meta
-    property="og:description"
-    content="Reach out to Kerliix Technologies for support, inquiries, partnerships, or feedback. Our team is here to assist you quickly and securely."
-  />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="https://raw.githubusercontent.com/kerliix/.github/main/company/logo.png" />
-  <meta property="og:url" content="https://www.kerliix.com/contact" />
+        {/* JSON-LD Structured Data */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "ContactPage",
+            "name": "Kerliix Contact Page",
+            "url": "https://www.kerliix.com/contact",
+            "description":
+              "Contact Kerliix Technologies for support, inquiries, partnerships, or feedback. We provide quick and secure assistance.",
+            "publisher": {
+              "@type": "Organization",
+              "name": "Kerliix Technologies",
+              "logo": {
+                "@type": "ImageObject",
+                "url": "https://raw.githubusercontent.com/kerliix/.github/main/company/logo.png",
+              },
+            },
+          })}
+        </script>
+      </Helmet>
 
-  {/* Twitter Card */}
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Contact Kerliix Technologies" />
-  <meta
-    name="twitter:description"
-    content="Reach out to Kerliix Technologies for support, inquiries, partnerships, or feedback. Our team is here to assist you quickly and securely."
-  />
-  <meta
-    name="twitter:image"
-    content="https://raw.githubusercontent.com/kerliix/.github/main/company/logo.png"
-  />
-
-  {/* JSON-LD Structured Data */}
-  <script type="application/ld+json">
-    {JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "ContactPage",
-      "name": "Kerliix Contact Page",
-      "url": "https://www.kerliix.com/contact",
-      "description": "Contact Kerliix Technologies for support, inquiries, partnerships, or feedback. We provide quick and secure assistance.",
-      "publisher": {
-        "@type": "Organization",
-        "name": "Kerliix Technologies",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://raw.githubusercontent.com/kerliix/.github/main/company/logo.png"
-        }
-      }
-    })}
-  </script>
-</Helmet>
-      
       {/* Header */}
       <div className="max-w-4xl mx-auto text-center mb-12">
         <h1 className="text-4xl font-bold mb-4">Contact Us</h1>
@@ -329,11 +325,11 @@ const Contact = () => {
 
             <p className="font-semibold text-white">Important Notice</p>
             <p className="text-white/80">Official responses will come from:</p>
-              <ul className="list-disc list-inside text-white/70 mt-1">
-                <li>noreply@kerliix.com</li>
-                <li>support@kerliix.com</li>
-                <li>info@kerliix.com</li>
-              </ul>
+            <ul className="list-disc list-inside text-white/70 mt-1">
+              <li>noreply@kerliix.com</li>
+              <li>support@kerliix.com</li>
+              <li>info@kerliix.com</li>
+            </ul>
             <p>
               Please be{' '}
               <span className="font-semibold text-red-500">cautious</span> of any other email addresses claiming to represent Kerliix.
