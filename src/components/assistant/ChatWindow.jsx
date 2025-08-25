@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { X, Send } from "lucide-react";
+import React, { useState, useRef, useEffect } from "react";
+import { FiX, FiSend } from "react-icons/fi";
 import MessageBubble from "./MessageBubble";
 import API from "../../api";
 
@@ -9,6 +9,12 @@ export default function ChatWindow({ onClose }) {
   ]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
+  const messagesEndRef = useRef(null);
+
+  // Scroll to bottom whenever messages change
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages, loading]);
 
   const sendMessage = async (e) => {
     e.preventDefault();
@@ -45,7 +51,7 @@ export default function ChatWindow({ onClose }) {
       <div className="flex justify-between items-center bg-blue-600 text-white px-4 py-3">
         <span className="font-semibold">Assistant</span>
         <button onClick={onClose}>
-          <X size={20} />
+          <FiX size={20} />
         </button>
       </div>
 
@@ -54,9 +60,8 @@ export default function ChatWindow({ onClose }) {
         {messages.map((msg, i) => (
           <MessageBubble key={i} sender={msg.sender} text={msg.text} />
         ))}
-        {loading && (
-          <MessageBubble sender="assistant" text="Typing..." />
-        )}
+        {loading && <MessageBubble sender="assistant" text="Typing..." />}
+        <div ref={messagesEndRef} />
       </div>
 
       {/* Input */}
@@ -73,13 +78,12 @@ export default function ChatWindow({ onClose }) {
         />
         <button
           type="submit"
-          className="ml-2 bg-blue-600 hover:bg-blue-700 text-white p-2 rounded-lg"
+          className="ml-2 bg-blue-600 hover:bg-blue-700 text-white p-2 rounded-lg flex items-center justify-center"
           disabled={loading}
         >
-          <Send size={18} />
+          <FiSend size={18} />
         </button>
       </form>
     </div>
   );
-}
-
+                      }
