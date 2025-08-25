@@ -1,95 +1,80 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { FiMenu, FiX } from 'react-icons/fi';
-import { useAuth } from '../../context/AuthContext.jsx';
+import { FiMenu, FiX, FiSearch } from 'react-icons/fi';
+import SearchBar from './SearchBar';
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { user } = useAuth();
-
-  // Generate initials fallback, e.g. "JD" for John Doe
-  const getInitials = (user) => {
-    if (!user) return 'X';
-    const first = user.firstName || '';
-    const last = user.lastName || '';
-    if (!first && !last && user.username) {
-      return user.username.slice(0, 2).toUpperCase();
-    }
-    return (first[0] + (last[0] || '')).toUpperCase();
-  };
+  const [showSearch, setShowSearch] = useState(false);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-br from-blue-900 to-gray-900 border-b border-white/20 text-white px-4 py-3">
-      <div className="max-w-7xl mx-auto flex items-center justify-between">
-        {/* Left: Logo */}
-        <div className="flex items-center">
-          <Link to="/">
-            <img
-              src="https://raw.githubusercontent.com/kerliix/.github/main/company/logo.png"
-              alt="Kerliix Logo"
-              className="h-10 w-auto"
-            />
-          </Link>
-        </div>
-
-        {/* Center: Navigation Links (Desktop) */}
-        <div className="hidden md:flex space-x-6 text-sm font-medium">
-          <Link to="/about" className="hover:text-blue-400 transition">
-            About
-          </Link>
-          <Link to="/services" className="hover:text-blue-400 transition">
-            Services
-          </Link>
-          <Link to="/contact" className="hover:text-blue-400 transition">
-            Contact
-          </Link>
-        </div>
-
-        {/* Right: Profile + Mobile Menu Icon */}
-        <div className="flex items-center gap-4">
-          {/* Profile */}
-          <a
-            href="https://accounts.kerliix.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="sm:block h-10 w-10 rounded-full border-2 border-white/30 hover:border-white flex items-center justify-center font-medium text-white bg-gray-700 overflow-hidden"
-          >
-            {user?.avatarUrl ? (
+    <>
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-br from-blue-900 to-gray-900 border-b border-white/20 text-white px-4 py-3">
+        <div className="max-w-7xl mx-auto flex items-center justify-between">
+          {/* Left: Logo */}
+          <div className="flex items-center">
+            <Link to="/">
               <img
-                src={user.avatarUrl}
-                alt="Profile"
-                className="h-10 w-10 rounded-full object-cover"
+                src="https://raw.githubusercontent.com/kerliix/.github/main/company/logo.png"
+                alt="Kerliix Logo"
+                className="h-10 w-auto"
               />
-            ) : (
-              <span>{getInitials(user)}</span>
-            )}
-          </a>
+            </Link>
+          </div>
 
-          {/* Mobile Menu Button */}
-          <button
-            className="md:hidden text-white hover:text-blue-400 focus:outline-none"
-            aria-label={isMenuOpen ? "Close Menu" : "Open Menu"}
-            onClick={() => setIsMenuOpen((prev) => !prev)}
-          >
-            {isMenuOpen ? <FiX size={24} /> : <FiMenu size={24} />}
-          </button>
-        </div>
-      </div>
+          {/* Center: Navigation Links (Desktop) */}
+          <div className="hidden md:flex space-x-6 text-sm font-medium">
+            <Link to="/about" className="hover:text-blue-400 transition">
+              About
+            </Link>
+            <Link to="/services" className="hover:text-blue-400 transition">
+              Services
+            </Link>
+            <Link to="/contact" className="hover:text-blue-400 transition">
+              Contact
+            </Link>
+          </div>
 
-      {/* Mobile Menu Panel */}
-      {isMenuOpen && (
-        <div className="md:hidden mt-2 bg-gradient-to-br from-blue-900 to-gray-900 border-t border-white/20 px-4 py-3 space-y-3 text-sm font-medium">
-          <Link to="/about" onClick={() => setIsMenuOpen(false)} className="block hover:text-blue-400 transition">
-            About
-          </Link>
-          <Link to="/services" onClick={() => setIsMenuOpen(false)} className="block hover:text-blue-400 transition">
-            Services
-          </Link>
-          <Link to="/contact" onClick={() => setIsMenuOpen(false)} className="block hover:text-blue-400 transition">
-            Contact
-          </Link>
+          {/* Right: Search + Mobile Menu */}
+          <div className="flex items-center gap-4">
+            {/* Search Button */}
+            <button
+              onClick={() => setShowSearch((prev) => !prev)}
+              className="text-white hover:text-blue-400 focus:outline-none"
+              aria-label="Search"
+            >
+              <FiSearch size={22} />
+            </button>
+
+            {/* Mobile Menu Button */}
+            <button
+              className="md:hidden text-white hover:text-blue-400 focus:outline-none"
+              aria-label={isMenuOpen ? "Close Menu" : "Open Menu"}
+              onClick={() => setIsMenuOpen((prev) => !prev)}
+            >
+              {isMenuOpen ? <FiX size={24} /> : <FiMenu size={24} />}
+            </button>
+          </div>
         </div>
-      )}
-    </nav>
+
+        {/* Mobile Menu Panel */}
+        {isMenuOpen && (
+          <div className="md:hidden mt-2 bg-gradient-to-br from-blue-900 to-gray-900 border-t border-white/20 px-4 py-3 space-y-3 text-sm font-medium">
+            <Link to="/about" onClick={() => setIsMenuOpen(false)} className="block hover:text-blue-400 transition">
+              About
+            </Link>
+            <Link to="/services" onClick={() => setIsMenuOpen(false)} className="block hover:text-blue-400 transition">
+              Services
+            </Link>
+            <Link to="/contact" onClick={() => setIsMenuOpen(false)} className="block hover:text-blue-400 transition">
+              Contact
+            </Link>
+          </div>
+        )}
+      </nav>
+
+      {/* Search bar (slides down under navbar) */}
+      {showSearch && <SearchBar onClose={() => setShowSearch(false)} />}
+    </>
   );
-        }
+      }
