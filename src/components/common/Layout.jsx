@@ -2,17 +2,21 @@ import React from 'react';
 import { useLocation } from 'react-router-dom';
 import Navbar from './Navbar';
 import Footer from './Footer';
+import AssistantBubble from '../assistant/AssistantBubble';
 
 export default function Layout({ children }) {
   const location = useLocation();
 
   // Routes where navbar is NOT shown
   const noNavbarRoutes = ['/notfound'];
-  // Routes where footer is NOT shown (optional)
+  // Routes where footer is NOT shown
   const noFooterRoutes = ['/notfound'];
+  // Routes where assistant bubble is NOT shown (optional)
+  const noAssistantRoutes = ['/notfound'];
 
   const showNavbar = !noNavbarRoutes.includes(location.pathname.toLowerCase());
   const showFooter = !noFooterRoutes.includes(location.pathname.toLowerCase());
+  const showAssistant = !noAssistantRoutes.includes(location.pathname.toLowerCase());
 
   return (
     <div className="min-h-screen flex flex-col bg-gradient-to-br from-blue-900 via-black to-gray-900">
@@ -23,6 +27,11 @@ export default function Layout({ children }) {
       </main>
 
       {showFooter && <Footer />}
+
+      {/* Assistant bubble mounted globally */}
+      {showAssistant && <AssistantBubble />}
     </div>
   );
 }
+
+        
