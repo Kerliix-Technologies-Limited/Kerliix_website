@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { MessageCircle } from "lucide-react";
+import { FiMessageCircle } from "react-icons/fi";
 import ChatWindow from "./ChatWindow";
 
 export default function AssistantBubble() {
@@ -11,8 +11,9 @@ export default function AssistantBubble() {
       <button
         onClick={() => setOpen(!open)}
         className="fixed bottom-6 right-6 bg-blue-600 hover:bg-blue-700 text-white p-4 rounded-full shadow-lg transition-all duration-300"
+        aria-label={open ? "Close Assistant" : "Open Assistant"}
       >
-        <MessageCircle size={28} />
+        <FiMessageCircle size={28} />
       </button>
 
       {/* Chat window */}
