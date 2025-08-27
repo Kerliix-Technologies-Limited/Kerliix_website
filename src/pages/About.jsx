@@ -24,6 +24,18 @@ const About = () => {
         <meta property="og:type" content="website" />
         <meta property="og:image" content="/assets/about-vision.jpg" />
         <meta property="og:url" content="https://www.kerliix.com/about" />
+
+        {/* Google Analytics */}
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Z54P2X11KK"></script>
+<script>
+  {`
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-Z54P2X11KK');
+  `}
+</script>
+        
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="About Kerliix Technologies" />
