@@ -34,6 +34,17 @@ export default function HomePage() {
         <meta property="og:image" content="https://raw.githubusercontent.com/kerliix/.github/main/company/logo.png" />
         <meta property="og:url" content="https://www.kerliix.com" />
 
+        {/* Google Analytics */}
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Z54P2X11KK"></script>
+<script>
+  {`
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-Z54P2X11KK');
+  `}
+</script>
+
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Kerliix Technologies" />
