@@ -96,6 +96,17 @@ const Contact = () => {
           content="Kerliix, contact, support, inquiry, partnership, feedback, email, phone"
         />
         <meta name="author" content="Kerliix Technologies" />
+
+        {/* Google Analytics */}
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Z54P2X11KK"></script>
+<script>
+  {`
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-Z54P2X11KK');
+  `}
+</script>
         <meta property="og:title" content="Contact Kerliix Technologies" />
         <meta
           property="og:description"
