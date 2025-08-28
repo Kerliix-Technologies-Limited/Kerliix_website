@@ -89,7 +89,7 @@ export default function HomePage() {
       {/* Social Icons below the divider */}
       <div className="flex space-x-5 text-white/90">
         <a
-          href="https://www.facebook.com/kerliix_technologies"
+          href="https://www.facebook.com/profile.php?id=61580014167875"
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Facebook"
