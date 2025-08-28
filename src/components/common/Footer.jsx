@@ -25,7 +25,7 @@ export default function Footer() {
           {/* Social Icons */}
           <div className="flex space-x-5 mt-2 text-white/90">
             <a
-              href="https://www.facebook.com/kerliix"
+              href="https://www.facebook.com/profile.php?id=61580014167875"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Facebook"
@@ -174,7 +174,7 @@ export default function Footer() {
 
       {/* Tagline */}
       <div className="max-w-7xl mx-auto mt-6 text-center text-blue-400 uppercase tracking-wider font-semibold">
-        Unified. Connected. Together.
+        Connect. Understand. Unify.
       </div>
     </footer>
   );
