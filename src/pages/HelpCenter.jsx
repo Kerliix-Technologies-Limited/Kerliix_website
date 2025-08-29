@@ -8,7 +8,7 @@ export default function HelpCenter() {
         <title>Help Center | Kerliix Technologies</title>
         <meta
           name="description"
-          content="Find answers to frequently asked questions about Kerliix Technologies. Learn how to create an account, reset passwords, contact support, and explore our services."
+          content="Find answers to frequently asked questions about Kerliix Technologies. Learn how to register, reset passwords, manage your account, contact support, and explore our services."
         />
         <meta
           name="keywords"
@@ -27,15 +27,15 @@ export default function HelpCenter() {
         <meta property="og:url" content="https://www.kerliix.com/help" />
 
         {/* Google Analytics */}
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-Z54P2X11KK"></script>
-<script>
-  {`
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-Z54P2X11KK');
-  `}
-</script>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z54P2X11KK"></script>
+        <script>
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-Z54P2X11KK');
+          `}
+        </script>
 
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
@@ -60,7 +60,7 @@ export default function HelpCenter() {
                 "name": "How do I create an account?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "Visit accounts.kerliix.com and follow the registration process."
+                  "text": "Visit auth.kerliix.com to register for a new account. After creating your account, you can manage it at accounts.kerliix.com."
                 }
               },
               {
@@ -68,7 +68,7 @@ export default function HelpCenter() {
                 "name": "I forgot my password. What should I do?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "Go to the login page and click on 'Forgot Password?' to reset your password via email."
+                  "text": "Go to auth.kerliix.com/login and click on 'Forgot Password?' to reset your password via email."
                 }
               },
               {
@@ -76,7 +76,7 @@ export default function HelpCenter() {
                 "name": "How can I contact support?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "You can reach our support team via email at support@kerliix.com."
+                  "text": "Fill out the contact form at kerliix.com/contact and our team will respond as soon as possible."
                 }
               },
               {
@@ -84,7 +84,7 @@ export default function HelpCenter() {
                 "name": "Where can I learn more about your services?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "Visit our Services page for a full breakdown of what we offer."
+                  "text": "Visit the Services page on kerliix.com for a full breakdown of what we offer."
                 }
               },
               {
@@ -92,7 +92,23 @@ export default function HelpCenter() {
                 "name": "How do I delete my account?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "Contact info@kerliix.com with your request to permanently delete your account."
+                  "text": "Go to accounts.kerliix.com, open Settings, scroll down to Danger Zone, and select Delete Account."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How is my data protected?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Kerliix uses encryption, secure access controls, and industry-standard protocols to protect your data."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Can I provide feedback or suggestions?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes, you can send feedback via kerliix.com/contact using the feedback option in the form."
                 }
               }
             ]
@@ -112,10 +128,13 @@ export default function HelpCenter() {
             <h2 className="text-2xl font-semibold mb-2">1. How do I create an account?</h2>
             <p className="text-white/80">
               To create an account, visit{' '}
+              <a href="https://auth.kerliix.com/register" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline">
+                auth.kerliix.com
+              </a>{' '}
+              and complete the registration steps. Once created, manage your details anytime at{' '}
               <a href="https://accounts.kerliix.com" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline">
                 accounts.kerliix.com
-              </a>{' '}
-              and follow the registration steps. Make sure to use a valid email address for verification.
+              </a>.
             </p>
           </div>
 
@@ -123,7 +142,11 @@ export default function HelpCenter() {
           <div>
             <h2 className="text-2xl font-semibold mb-2">2. I forgot my password. What should I do?</h2>
             <p className="text-white/80">
-              Click <span className="italic">"Forgot Password?"</span> on the login page. You will receive an email with instructions to reset your password securely.
+              Go to{' '}
+              <a href="https://auth.kerliix.com/login" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline">
+                auth.kerliix.com/login
+              </a>{' '}
+              and click <span className="italic">"Forgot Password?"</span>. You’ll receive an email with reset instructions.
             </p>
           </div>
 
@@ -131,10 +154,11 @@ export default function HelpCenter() {
           <div>
             <h2 className="text-2xl font-semibold mb-2">3. How can I contact support?</h2>
             <p className="text-white/80">
-              Reach our support team via email at{' '}
-              <a href="mailto:support@kerliix.com" className="text-blue-400 hover:underline">
-                support@kerliix.com
-              </a>. We aim to respond within 24 hours.
+              Fill out the contact form at{' '}
+              <a href="https://www.kerliix.com/contact" className="text-blue-400 hover:underline">
+                kerliix.com/contact
+              </a>{' '}
+              and our team will get back to you, usually within 24 hours.
             </p>
           </div>
 
@@ -150,12 +174,14 @@ export default function HelpCenter() {
           <div>
             <h2 className="text-2xl font-semibold mb-2">5. How do I delete my account?</h2>
             <p className="text-white/80">
-              To permanently delete your account, send a request to{' '}
-              <a href="mailto:info@kerliix.com" className="text-blue-400 hover:underline">info@kerliix.com</a>. We will verify your request and securely remove your data.
+              To permanently delete your account, go to{' '}
+              <a href="https://accounts.kerliix.com" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline">
+                accounts.kerliix.com
+              </a>, open <strong>Settings</strong>, scroll to the <strong>Danger Zone</strong>, and click <strong>Delete Account</strong>.
             </p>
           </div>
 
-          {/* FAQ 6 (expanded) */}
+          {/* FAQ 6 */}
           <div>
             <h2 className="text-2xl font-semibold mb-2">6. How is my data protected?</h2>
             <p className="text-white/80">
@@ -163,24 +189,54 @@ export default function HelpCenter() {
             </p>
           </div>
 
-          {/* FAQ 7 (expanded) */}
+          {/* FAQ 7 */}
           <div>
             <h2 className="text-2xl font-semibold mb-2">7. Can I provide feedback or suggestions?</h2>
             <p className="text-white/80">
-              Absolutely! We value your input. Send feedback to{' '}
-              <a href="mailto:feedback@kerliix.com" className="text-blue-400 hover:underline">
-                feedback@kerliix.com
-              </a>. Your insights help us improve our platform.
+              Absolutely! Share your ideas using the{' '}
+              <a href="https://www.kerliix.com/contact" className="text-blue-400 hover:underline">
+                contact form
+              </a>{' '}and select <em>Feedback</em>. Your input helps us improve Kerliix.
+            </p>
+          </div>
+
+          {/* FAQ 8 */}
+          <div>
+            <h2 className="text-2xl font-semibold mb-2">8. Does Kerliix offer billing and invoices?</h2>
+            <p className="text-white/80">
+              Yes. You can view and download invoices or manage billing preferences from{' '}
+              <a href="https://accounts.kerliix.com" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline">
+                accounts.kerliix.com
+              </a>{' '}under the <strong>Billing</strong> section.
+            </p>
+          </div>
+
+          {/* FAQ 9 */}
+          <div>
+            <h2 className="text-2xl font-semibold mb-2">9. Can developers integrate with Kerliix?</h2>
+            <p className="text-white/80">
+              Yes! Developers can access our <strong>Universal API (UAPI)</strong> with documentation and examples at{' '}
+              <a href="/developers" className="text-blue-400 hover:underline">
+                kerliix.com/developers
+              </a>.
+            </p>
+          </div>
+
+          {/* FAQ 10 */}
+          <div>
+            <h2 className="text-2xl font-semibold mb-2">10. How can I stay updated with new features?</h2>
+            <p className="text-white/80">
+              Check our <a href="/blog" className="text-blue-400 hover:underline">Blog</a> or <a href="/updates" className="text-blue-400 hover:underline">Release Notes</a> for the latest features, improvements, and announcements.
             </p>
           </div>
         </div>
 
         <div className="mt-16 text-sm text-white/60 border-t border-white/20 pt-6 text-center">
-          Still need help? Reach out anytime at{' '}
-          <a href="mailto:support@kerliix.com" className="text-blue-400 hover:underline">
-            support@kerliix.com
-          </a>
-          . Our team is happy to assist.
+          Still need help? Visit{' '}
+          <a href="https://www.kerliix.com/contact" className="text-blue-400 hover:underline">
+            kerliix.com/contact
+          </a>{' '}
+          and fill out the form. Our team is happy to assist.
         </div>
       </div>
     </div>
