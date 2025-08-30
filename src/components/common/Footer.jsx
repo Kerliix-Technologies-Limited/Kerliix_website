@@ -18,14 +18,14 @@ export default function Footer() {
         <div>
           <h3 className="text-xl font-semibold mb-2">Kerliix</h3>
           <p className="text-sm text-white/80 leading-relaxed mb-4">
-            Empowering connections through intuitive design and cutting-edge technology.
-            Let's build the future together.
+            Kerliix Technologies. Unifying people and the technologies they use into a seamless digital ecosystem.<br />
+            Be part of the unified and connected ecosystem with Kerliix.
           </p>
 
           {/* Social Icons */}
           <div className="flex space-x-5 mt-2 text-white/90">
             <a
-              href="https://www.facebook.com/kerliix"
+              href="https://www.facebook.com/profile.php?id=61580014167875"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Facebook"

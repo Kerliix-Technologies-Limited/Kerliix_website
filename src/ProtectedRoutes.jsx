@@ -1,8 +1,8 @@
 import React from 'react';
 import { Navigate } from 'react-router-dom';
-import { useAuth } from './AuthContext.jsx';
+import { useAuth } from './context/AuthContext.jsx';
 
-export default function ProtectedRoutes({ children, fallback = 'https://auth.kerliix.com' }) {
+export default function ProtectedRoutes({ children, fallback = '/login' }) {
   const { user, loading } = useAuth();
 
   if (loading) {
@@ -10,9 +10,7 @@ export default function ProtectedRoutes({ children, fallback = 'https://auth.ker
   }
 
   if (!user) {
-    // Redirect to central login at auth.kerliix.com
-    window.location.href = fallback;
-    return null; // Prevent rendering anything while redirecting
+    return <Navigate to={fallback} replace />;
   }
 
   return children;

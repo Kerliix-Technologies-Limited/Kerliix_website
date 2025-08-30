@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import toast from 'react-hot-toast';
+import API from '../../api.js';
 
 const SubscribeForm = () => {
   const [email, setEmail] = useState('');
@@ -20,29 +21,26 @@ const SubscribeForm = () => {
 
     setLoading(true);
     try {
-      const res = await fetch('http://localhost:5000/api/subscribe', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email }),
-      });
+      const res = await API.post('/newsletter/subscribe', { email });
 
-      const data = await res.json();
-
-      if (res.ok) {
-        toast.success(data.message || 'Successfully subscribed!');
+      if (res.status === 200) {
+        toast.success(res.data.message || 'Successfully subscribed!');
         setEmail('');
       } else {
-        toast.error(data.message || 'Subscription failed.');
+        toast.error(res.data.message || 'Subscription failed.');
       }
     } catch (err) {
-      toast.error('Something went wrong. Try again later.');
+      toast.error(err.response?.data?.error || 'Something went wrong. Try again later.');
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row items-center gap-3 max-w-md mx-auto sm:mx-0">
+    <form
+      onSubmit={handleSubscribe}
+      className="flex flex-col sm:flex-row items-center gap-3 max-w-md mx-auto sm:mx-0"
+    >
       <input
         type="email"
         value={email}

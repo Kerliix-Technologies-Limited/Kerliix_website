@@ -1,8 +1,68 @@
 import React from "react";
+import { Helmet } from "react-helmet-async";
 
 const About = () => {
   return (
     <section className="text-white py-16 px-6">
+      <Helmet>
+        <title>About Kerliix Technologies | Connecting People & Technology</title>
+        <meta
+          name="description"
+          content="Learn about Kerliix Technologies, our mission to unify digital experiences, and how we connect people with technology seamlessly. Discover our vision, team, and developer tools."
+        />
+        <meta
+          name="keywords"
+          content="Kerliix, technology, digital experiences, developer tools, connected devices, APIs, SDKs, tech innovation"
+        />
+        <meta name="author" content="Kerliix Technologies" />
+        {/* Open Graph / Social Sharing */}
+        <meta property="og:title" content="About Kerliix Technologies" />
+        <meta
+          property="og:description"
+          content="Connecting people with technology seamlessly. Explore our vision, team, and developer tools."
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="/assets/about-vision.jpg" />
+        <meta property="og:url" content="https://www.kerliix.com/about" />
+
+        {/* Google Analytics */}
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Z54P2X11KK"></script>
+<script>
+  {`
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-Z54P2X11KK');
+  `}
+</script>
+        
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="About Kerliix Technologies" />
+        <meta
+          name="twitter:description"
+          content="Connecting people with technology seamlessly. Explore our vision, team, and developer tools."
+        />
+        <meta name="twitter:image" content="/assets/about-vision.jpg" />
+
+        {/* JSON-LD Structured Data */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "Kerliix Technologies",
+            "url": "https://www.kerliix.com",
+            "logo": "https://www.kerliix.com/assets/logo.png",
+            "sameAs": [
+              "https://twitter.com/kerliix",
+              "https://www.linkedin.com/company/kerliix",
+              "https://www.facebook.com/kerliix"
+            ],
+            "description": "Kerliix Technologies connects people with technology seamlessly. We provide APIs, SDKs, and solutions to unify digital experiences for individuals and organizations."
+          })}
+        </script>
+      </Helmet>
+
       <div className="max-w-5xl mx-auto space-y-10">
         {/* Header */}
         <div className="text-center">
@@ -31,50 +91,6 @@ const About = () => {
             Our mission is simple: unify the digital experiences of individuals and organizations while empowering them to interact naturally with technology. From personal devices to enterprise systems, Kerliix enables everything to communicate, collaborate, and enhance human experience.
           </p>
 
-          {/* Image 2 */}
-          <div className="rounded overflow-hidden shadow-lg border border-blue-700">
-            <img
-              src="/assets/about-devices.jpg"
-              alt="Interconnected Devices"
-              className="w-full h-64 object-cover"
-            />
-          </div>
-
-          <p>
-            At Kerliix, we envision a future where every interaction with technology feels fluid, intuitive, and human-centric. Whether it’s your smart home syncing with your lifestyle apps or your work tools connecting effortlessly, Kerliix ensures everything works together as one unified ecosystem.
-          </p>
-
-          <p>
-            For developers, we provide well-documented APIs, SDKs, and tools that unlock cross-platform capabilities. Our environment enables rapid prototyping and integration testing, allowing innovation without friction.
-          </p>
-
-          <p>
-            Organizations also benefit: Kerliix helps streamline infrastructure, unify digital touchpoints, and provide secure, personalized experiences for users—all while maintaining simplicity and transparency.
-          </p>
-
-          {/* Image 3 */}
-          <div className="rounded overflow-hidden shadow-lg border border-blue-700">
-            <img
-              src="/assets/about-team.jpg"
-              alt="Kerliix Team Collaboration"
-              className="w-full h-64 object-cover"
-            />
-          </div>
-
-          <p>
-            Kerliix is bold, agile, and committed to solving the universal challenge of disconnected technology. Our team of engineers, designers, and thinkers work with curiosity, empathy, and a mission to unify technology without sacrificing power.
-          </p>
-
-          <p>
-            Join us in creating a future where people and technology coexist harmoniously. With Kerliix, the digital world is unified, connected, and empowering.
-          </p>
-        </div>
-      </div>
-    </section>
-  );
-};
-
-export default About;
           {/* Image 2 */}
           <div className="rounded overflow-hidden shadow-lg border border-blue-700">
             <img

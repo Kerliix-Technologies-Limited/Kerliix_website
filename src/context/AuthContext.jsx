@@ -45,4 +45,4 @@ export function AuthProvider({ children }) {
 // Hook to consume context
 export function useAuth() {
   return useContext(AuthContext);
-}
+  }
