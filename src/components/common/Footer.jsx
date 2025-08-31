@@ -34,7 +34,7 @@ export default function Footer() {
               <FaFacebookF size={20} />
             </a>
             <a
-              href="https://www.instagram.com/kerliix"
+              href="https://www.instagram.com/kerliix_technologies"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Instagram"
@@ -43,7 +43,7 @@ export default function Footer() {
               <FaInstagram size={20} />
             </a>
             <a
-              href="https://x.com/kerliix"
+              href="https://x.com/kerliix_technologies"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="X"
@@ -52,7 +52,7 @@ export default function Footer() {
               <SiX size={20} />
             </a>
             <a
-              href="https://www.linkedin.com/company/kerliix"
+              href="https://www.linkedin.com/company/kerliix_technologies"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="LinkedIn"
@@ -61,7 +61,7 @@ export default function Footer() {
               <FaLinkedinIn size={20} />
             </a>
             <a
-              href="https://github.com/kerliix"
+              href="https://github.com/kerliix_technologies"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="GitHub"

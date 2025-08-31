@@ -76,31 +76,7 @@ export default function HelpCenter() {
                 "name": "How can I contact support?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "Fill out the contact form at kerliix.com/contact and our team will respond as soon as possible."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "Where can I learn more about your services?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Visit the Services page on kerliix.com for a full breakdown of what we offer."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "How do I delete my account?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Go to accounts.kerliix.com, open Settings, scroll down to Danger Zone, and select Delete Account."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "How is my data protected?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Kerliix uses encryption, secure access controls, and industry-standard protocols to protect your data."
+                  "text": "You can email us directly at support@kerliix.com or info@kerliix.com, or fill out the contact form at kerliix.com/contact and our team will respond as soon as possible."
                 }
               },
               {
@@ -109,6 +85,14 @@ export default function HelpCenter() {
                 "acceptedAnswer": {
                   "@type": "Answer",
                   "text": "Yes, you can send feedback via kerliix.com/contact using the feedback option in the form."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Can developers integrate with Kerliix?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes! Developers can access our Universal API (UAPI) with documentation and examples at kerliix.com/developers."
                 }
               }
             ]
@@ -154,44 +138,23 @@ export default function HelpCenter() {
           <div>
             <h2 className="text-2xl font-semibold mb-2">3. How can I contact support?</h2>
             <p className="text-white/80">
-              Fill out the contact form at{' '}
+              You can email us directly at{' '}
+              <a href="mailto:support@kerliix.com" className="text-blue-400 hover:underline">
+                support@kerliix.com
+              </a>{' '}
+              or{' '}
+              <a href="mailto:info@kerliix.com" className="text-blue-400 hover:underline">
+                info@kerliix.com
+              </a>, or fill out the contact form at{' '}
               <a href="https://www.kerliix.com/contact" className="text-blue-400 hover:underline">
                 kerliix.com/contact
-              </a>{' '}
-              and our team will get back to you, usually within 24 hours.
+              </a>. Our team will get back to you, usually within 24 hours.
             </p>
           </div>
 
           {/* FAQ 4 */}
           <div>
-            <h2 className="text-2xl font-semibold mb-2">4. Where can I learn more about your services?</h2>
-            <p className="text-white/80">
-              Visit our <a href="/services" className="text-blue-400 hover:underline">Services</a> page for a detailed overview of our offerings, including integrations, automation, cloud solutions, AI insights, and consulting.
-            </p>
-          </div>
-
-          {/* FAQ 5 */}
-          <div>
-            <h2 className="text-2xl font-semibold mb-2">5. How do I delete my account?</h2>
-            <p className="text-white/80">
-              To permanently delete your account, go to{' '}
-              <a href="https://accounts.kerliix.com" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline">
-                accounts.kerliix.com
-              </a>, open <strong>Settings</strong>, scroll to the <strong>Danger Zone</strong>, and click <strong>Delete Account</strong>.
-            </p>
-          </div>
-
-          {/* FAQ 6 */}
-          <div>
-            <h2 className="text-2xl font-semibold mb-2">6. How is my data protected?</h2>
-            <p className="text-white/80">
-              Kerliix uses industry-standard security protocols, encryption, and access controls to safeguard your personal data. We never sell your information and only use it to provide and improve our services.
-            </p>
-          </div>
-
-          {/* FAQ 7 */}
-          <div>
-            <h2 className="text-2xl font-semibold mb-2">7. Can I provide feedback or suggestions?</h2>
+            <h2 className="text-2xl font-semibold mb-2">4. Can I provide feedback or suggestions?</h2>
             <p className="text-white/80">
               Absolutely! Share your ideas using the{' '}
               <a href="https://www.kerliix.com/contact" className="text-blue-400 hover:underline">
@@ -200,20 +163,9 @@ export default function HelpCenter() {
             </p>
           </div>
 
-          {/* FAQ 8 */}
+          {/* FAQ 5 */}
           <div>
-            <h2 className="text-2xl font-semibold mb-2">8. Does Kerliix offer billing and invoices?</h2>
-            <p className="text-white/80">
-              Yes. You can view and download invoices or manage billing preferences from{' '}
-              <a href="https://accounts.kerliix.com" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline">
-                accounts.kerliix.com
-              </a>{' '}under the <strong>Billing</strong> section.
-            </p>
-          </div>
-
-          {/* FAQ 9 */}
-          <div>
-            <h2 className="text-2xl font-semibold mb-2">9. Can developers integrate with Kerliix?</h2>
+            <h2 className="text-2xl font-semibold mb-2">5. Can developers integrate with Kerliix?</h2>
             <p className="text-white/80">
               Yes! Developers can access our <strong>Universal API (UAPI)</strong> with documentation and examples at{' '}
               <a href="/developers" className="text-blue-400 hover:underline">
@@ -221,18 +173,17 @@ export default function HelpCenter() {
               </a>.
             </p>
           </div>
-
-          {/* FAQ 10 */}
-          <div>
-            <h2 className="text-2xl font-semibold mb-2">10. How can I stay updated with new features?</h2>
-            <p className="text-white/80">
-              Check our <a href="/blog" className="text-blue-400 hover:underline">Blog</a> or <a href="/updates" className="text-blue-400 hover:underline">Release Notes</a> for the latest features, improvements, and announcements.
-            </p>
-          </div>
         </div>
 
         <div className="mt-16 text-sm text-white/60 border-t border-white/20 pt-6 text-center">
-          Still need help? Visit{' '}
+          Still need help? Email us at{' '}
+          <a href="mailto:support@kerliix.com" className="text-blue-400 hover:underline">
+            support@kerliix.com
+          </a>{' '}
+          or{' '}
+          <a href="mailto:info@kerliix.com" className="text-blue-400 hover:underline">
+            info@kerliix.com
+          </a>, or visit{' '}
           <a href="https://www.kerliix.com/contact" className="text-blue-400 hover:underline">
             kerliix.com/contact
           </a>{' '}
@@ -241,4 +192,4 @@ export default function HelpCenter() {
       </div>
     </div>
   );
-          }
+}

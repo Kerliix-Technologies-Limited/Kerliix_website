@@ -75,8 +75,8 @@ const About = () => {
         {/* Image 1 */}
         <div className="rounded overflow-hidden shadow-lg border border-blue-700">
           <img
-            src="/assets/about-vision.jpg"
-            alt="Kerliix Vision"
+            src="/assets/kerliix-logo.png"
+            alt="Kerliix logo"
             className="w-full h-64 object-cover"
           />
         </div>
@@ -91,14 +91,14 @@ const About = () => {
             Our mission is simple: unify the digital experiences of individuals and organizations while empowering them to interact naturally with technology. From personal devices to enterprise systems, Kerliix enables everything to communicate, collaborate, and enhance human experience.
           </p>
 
-          {/* Image 2 */}
+          {/* Image 2 
           <div className="rounded overflow-hidden shadow-lg border border-blue-700">
             <img
-              src="/assets/about-devices.jpg"
+              src="/assets/kerliix-icon.png"
               alt="Interconnected Devices"
               className="w-full h-64 object-cover"
             />
-          </div>
+          </div>*/}
 
           <p>
             At Kerliix, we envision a future where every interaction with technology feels natural, helpful, and human-centric. Whether it's your smart fridge talking to your fitness app, or your car syncing with your calendar, we're making those invisible connections possible.
@@ -112,14 +112,14 @@ const About = () => {
             We also recognize the role of organizations and enterprises. While our core focus is individuals and developers, we’re building scalable solutions that help organizations personalize customer experiences, streamline infrastructure, and unlock new value from user data—securely and ethically.
           </p>
 
-          {/* Image 3 */}
+          {/* Image 3 
           <div className="rounded overflow-hidden shadow-lg border border-blue-700">
             <img
               src="/assets/about-team.jpg"
               alt="Kerliix Team Collaboration"
               className="w-full h-64 object-cover"
             />
-          </div>
+          </div>*/}
 
           <p>
             Kerliix is still young—but we’re bold, agile, and focused on solving a problem that affects billions. Our team is made up of engineers, designers, and thinkers driven by curiosity, empathy, and a mission to simplify technology without compromising power.

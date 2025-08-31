@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import toast from 'react-hot-toast';
+import { toast } from 'react-toastify';  // Changed from react-hot-toast to react-toastify
 import { Helmet } from 'react-helmet-async';
 import {
   HiLocationMarker,
@@ -7,11 +7,11 @@ import {
   HiMail,
 } from 'react-icons/hi';
 import {
-  FaTwitter,
   FaLinkedinIn,
   FaInstagram,
-  FaYoutube,
+  FaFacebook,
 } from 'react-icons/fa';
+import { SiX } from 'react-icons/si';
 import API from '../api';
 
 const Contact = () => {
@@ -22,6 +22,8 @@ const Contact = () => {
     customSubject: '',
     message: '',
   });
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const predefinedSubjects = [
     'Support',
@@ -58,6 +60,8 @@ const Contact = () => {
       return;
     }
 
+    setIsSubmitting(true);
+
     try {
       const { data } = await API.post('/contact', {
         name: formData.name,
@@ -80,6 +84,8 @@ const Contact = () => {
       } else {
         toast.error('Network error, please try again later.');
       }
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -98,15 +104,15 @@ const Contact = () => {
         <meta name="author" content="Kerliix Technologies" />
 
         {/* Google Analytics */}
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-Z54P2X11KK"></script>
-<script>
-  {`
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-Z54P2X11KK');
-  `}
-</script>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z54P2X11KK"></script>
+        <script>
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-Z54P2X11KK');
+          `}
+        </script>
         <meta property="og:title" content="Contact Kerliix Technologies" />
         <meta
           property="og:description"
@@ -253,9 +259,42 @@ const Contact = () => {
             <div>
               <button
                 type="submit"
-                className="w-full bg-blue-700 hover:bg-blue-800 text-white font-semibold py-2 rounded-md transition-colors duration-300"
+                disabled={isSubmitting}
+                className={`w-full py-2 px-4 rounded-md font-semibold transition duration-200
+                  ${
+                    isSubmitting
+                      ? 'bg-blue-700 text-white cursor-wait'
+                      : 'bg-blue-700 hover:bg-blue-800 text-white'
+                  }
+                `}
               >
-                Send Message
+                {isSubmitting ? (
+                  <div className="flex items-center justify-center space-x-2">
+                    <svg
+                      className="animate-spin h-5 w-5 text-white"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                    >
+                      <circle
+                        className="opacity-25"
+                        cx="12"
+                        cy="12"
+                        r="10"
+                        stroke="currentColor"
+                        strokeWidth="4"
+                      ></circle>
+                      <path
+                        className="opacity-75"
+                        fill="currentColor"
+                        d="M4 12a8 8 0 018-8v8H4z"
+                      ></path>
+                    </svg>
+                    <span>Sending...</span>
+                  </div>
+                ) : (
+                  'Send Message'
+                )}
               </button>
             </div>
           </form>
@@ -268,7 +307,7 @@ const Contact = () => {
             <div>
               <p className="font-semibold text-white">Our Address</p>
               <p className="text-white/70">
-                Ben Kiwanuka street
+                Street
                 <br />
                 Kampala, Uganda
               </p>
@@ -296,36 +335,36 @@ const Contact = () => {
             <p className="font-semibold text-white mb-2">Follow us</p>
             <div className="flex flex-wrap gap-4 text-xl">
               <a
-                href="#"
-                aria-label="Twitter"
+                href="https://www.facebook.com/profile.php?id=61580014167875"
+                aria-label="Facebook"
                 className="flex items-center gap-1 text-blue-400 hover:text-blue-600 transition"
               >
-                <FaTwitter />
-                @kerliix
+                <FaFacebook />
+                kerliix Technologies
               </a>
               <a
-                href="#"
+                href="https://www.instagram.com/kerliix_technologies"
                 aria-label="Instagram"
                 className="flex items-center gap-1 text-blue-400 hover:text-blue-600 transition"
               >
                 <FaInstagram />
-                kerliix
+                kerliix_technologies
               </a>
               <a
-                href="#"
+                href="https://x.com/kerliix_technologies"
+                aria-label="X"
+                className="flex items-center gap-1 text-blue-400 hover:text-blue-600 transition"
+              >
+                <SiX />
+                @kerliix_technologies
+              </a>
+              <a
+                href="https://www.linkedin.com/company/kerliix_technologies"
                 aria-label="LinkedIn"
                 className="flex items-center gap-1 text-blue-400 hover:text-blue-600 transition"
               >
                 <FaLinkedinIn />
-                Kerliix
-              </a>
-              <a
-                href="#"
-                aria-label="YouTube"
-                className="flex items-center gap-1 text-blue-400 hover:text-blue-600 transition"
-              >
-                <FaYoutube />
-                Kerliix
+                Kerliix_technologies
               </a>
             </div>
           </div>
