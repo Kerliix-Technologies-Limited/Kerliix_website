@@ -28,7 +28,16 @@ export default function Navbar() {
               About
             </Link>
             <Link to="/services" className="hover:text-blue-400 transition">
-              Services
+              Products & Services
+            </Link>
+            <Link to="/blog" className="hover:text-blue-400 transition">
+              Blog
+            </Link>
+            <Link to="/announcements" className="hover:text-blue-400 transition">
+              What's New
+            </Link>
+            <Link to="/help" className="hover:text-blue-400 transition">
+              Help Center
             </Link>
             <Link to="/contact" className="hover:text-blue-400 transition">
               Contact
@@ -64,7 +73,16 @@ export default function Navbar() {
               About
             </Link>
             <Link to="/services" onClick={() => setIsMenuOpen(false)} className="block hover:text-blue-400 transition">
-              Services
+              Products & Services
+            </Link>
+            <Link to="/blog" className="hover:text-blue-400 transition">
+              Blog
+            </Link>
+            <Link to="/announcements" onClick={() => setIsMenuOpen(false)} className="block hover:text-blue-400 transition">
+              What's New
+            </Link>
+            <Link to="/help" onClick={() => setIsMenuOpen(false)} className="block hover:text-blue-400 transition">
+              Help Center
             </Link>
             <Link to="/contact" onClick={() => setIsMenuOpen(false)} className="block hover:text-blue-400 transition">
               Contact
@@ -77,4 +95,4 @@ export default function Navbar() {
       {showSearch && <SearchBar onClose={() => setShowSearch(false)} />}
     </>
   );
-      }
+}
